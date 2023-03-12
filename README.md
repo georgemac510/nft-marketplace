@@ -48,8 +48,8 @@ Installed with Node.js 16.15.0
 
 1. Add applicable data to your .env file
    
-        NEXT_PUBLIC_NFT_MARKET_ADDRESS=new contract address<br>
-        NEXT_PUBLIC_GRAPH_URL=get from GraphQL setup<br>
+        NEXT_PUBLIC_NFT_MARKET_ADDRESS=new contract address
+        NEXT_PUBLIC_GRAPH_URL=get from GraphQL setup
         NFT_STORAGE_KEY=go to https://nft.storage and sign up for key
 
 2. Install and run app
