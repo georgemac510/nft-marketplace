@@ -26,6 +26,7 @@ contract NFTMarket is ERC721URIStorage, Ownable {
 
     }
 
+    // createNFT
     function createNFT(string calldata tokenURI) public {
         _tokenIds.increment();
         uint256 currentID = _tokenIds.current();
@@ -34,7 +35,7 @@ contract NFTMarket is ERC721URIStorage, Ownable {
         emit NFTTransfer(currentID, address(0), msg.sender, tokenURI, 0);
     }
 
-// ListNFT
+    // ListNFT
     function listNFT(uint256 tokenID, uint256 price) public {
         require(price > 0, "NFTMarket: price must be greater than 0");
         approve(address(this), tokenID);
@@ -43,6 +44,7 @@ contract NFTMarket is ERC721URIStorage, Ownable {
         emit NFTTransfer(tokenID, msg.sender, address(this), "", price);
     }
 
+    // BuyNFT
     function buyNFT(uint256 tokenID) public payable {
         NFTListing memory listing = _listings[tokenID];
         require(listing.price > 0, "NFTMarket: nft not listed for sale");
@@ -53,6 +55,7 @@ contract NFTMarket is ERC721URIStorage, Ownable {
         emit NFTTransfer(tokenID,address(this), msg.sender, "", 0);
     }
     
+    // Cancel listing
     function cancelListing(uint256 tokenID) public {
         NFTListing memory listing = _listings[tokenID];
         require(listing.price > 0, "NFTMarket: nft not listed for sale");
